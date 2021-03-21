@@ -1,4 +1,6 @@
 package com.penkin.weatherappkotlin.view.main
 
-interface MainView {
+import moxy.MvpView
+
+interface MainView: MvpView {
 }

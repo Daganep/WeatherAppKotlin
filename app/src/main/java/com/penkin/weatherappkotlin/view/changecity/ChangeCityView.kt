@@ -1,4 +1,6 @@
 package com.penkin.weatherappkotlin.view.changecity
 
-interface ChangeCityView {
+import moxy.MvpView
+
+interface ChangeCityView: MvpView {
 }

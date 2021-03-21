@@ -1,4 +1,9 @@
 package com.penkin.weatherappkotlin.presenter
 
-class MainPresenter {
+import com.penkin.weatherappkotlin.view.main.MainView
+import moxy.InjectViewState
+import moxy.MvpPresenter
+
+@InjectViewState
+class MainPresenter: MvpPresenter<MainView>() {
 }

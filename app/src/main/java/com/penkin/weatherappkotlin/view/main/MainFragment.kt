@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.penkin.weatherappkotlin.databinding.FragmentMainBinding
+import com.penkin.weatherappkotlin.presenter.MainPresenter
 import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 
 class MainFragment: MvpAppCompatFragment(), MainView {
 
+    @InjectPresenter
+    lateinit var presenter: MainPresenter
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 

@@ -1,4 +1,6 @@
 package com.penkin.weatherappkotlin.view.settings
 
-interface SettingsView {
+import moxy.MvpView
+
+interface SettingsView: MvpView {
 }
