@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorBtnGrey">#BEBEBE</color>
+    <color name="colorBtnRed">#F44336</color>
+
+    <!--spring theme-->
+    <color name="colorGreenPrimary">#09AF00</color>
+    <color name="colorGreenPrimaryDark">#008B00</color>
+    <color name="colorGreenAccent">#90EE02</color>
+
+    <!--winter theme-->
+    <color name="colorDarkGrey">#989595</color>
+    <color name="colorLightGrey">#BEBEBE</color>
 </resources>

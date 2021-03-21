@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.WeatherApp.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/changeCityToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Theme.WeatherApp.PopupOverlay"
+                app:title="Choose city"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/marginFromAppBar"
+            android:paddingStart="@dimen/defaultMarginX3"
+            android:paddingEnd="@dimen/defaultMarginX3">
+
+            <TextView
+                android:id="@+id/curCityLabelTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                android:text="@string/current_city"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/curCityNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/defaultMarginX2"
+                app:layout_constraintStart_toEndOf="@+id/curCityLabelTV"
+                app:layout_constraintTop_toTopOf="@+id/curCityLabelTV" />
+
+            <AutoCompleteTextView
+                android:id="@+id/cityNameACTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/write_name_of_city"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/curCityNameTV" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/determineButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin"
+                android:text="@string/locationCity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cityNameACTV" />
+
+            <TextView
+                android:id="@+id/popCityLabelTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX8"
+                android:text="@string/popular_cities"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/determineButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/moscowButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                android:text="@string/moscow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/popCityLabelTV" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/spbButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/defaultMargin"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                android:text="@string/saint_petersburg"
+                app:layout_constraintStart_toEndOf="@+id/moscowButton"
+                app:layout_constraintTop_toBottomOf="@+id/popCityLabelTV" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/vladimirButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/defaultMargin"
+                android:text="@string/vladimir"
+                app:layout_constraintStart_toEndOf="@+id/spbButton"
+                app:layout_constraintTop_toTopOf="@+id/spbButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bishkekButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:text="@string/bishkek"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moscowButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/novosibirskButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/defaultMargin"
+                android:text="@string/novosibirsk"
+                app:layout_constraintEnd_toStartOf="@+id/almatyButton"
+                app:layout_constraintStart_toEndOf="@+id/bishkekButton"
+                app:layout_constraintTop_toBottomOf="@+id/spbButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/almatyButton"
+                style="@style/cityButton"
+                android:layout_width="wrap_content"
+                android:text="@string/almaty"
+                app:layout_constraintEnd_toEndOf="@+id/vladimirButton"
+                app:layout_constraintTop_toTopOf="@+id/novosibirskButton" />
+
+            <TextView
+                android:id="@+id/historyLabelTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/otherPictureMarginStart"
+                android:layout_marginStart="@dimen/defaultMargin"
+                android:text="@string/history"
+                app:layout_constraintStart_toEndOf="@+id/clearHistoryButton"
+                app:layout_constraintTop_toBottomOf="@+id/bishkekButton" />
+
+            <ImageButton
+                android:id="@+id/clearHistoryButton"
+                android:layout_width="@dimen/defaultMarginX3"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/clear_history_button"
+                android:src="@android:drawable/ic_notification_clear_all"
+                app:layout_constraintBottom_toBottomOf="@+id/historyLabelTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/historyLabelTV" />
+
+            <TextView
+                android:id="@+id/citiesInHistoryTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/historyLabelTV" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/acceptButton"
+                style="@style/weatherButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/defaultMarginX4"
+                android:text="@string/accept_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

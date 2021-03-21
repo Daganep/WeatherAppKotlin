@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.WeatherApp.AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/settingsToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Theme.WeatherApp.PopupOverlay"
+                app:title="Settings"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/marginFromAppBar"
+            android:paddingStart="@dimen/defaultMarginX3"
+            android:paddingEnd="@dimen/defaultMarginX3">
+
+            <TextView
+                android:id="@+id/tempTVSetFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin"
+                android:text="@string/temperature"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/celButtonSetFrag" />
+
+            <TextView
+                android:id="@+id/colorThemeTVSetFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                android:text="@string/color_theme"
+                app:layout_constraintStart_toStartOf="@+id/tempTVSetFrag"
+                app:layout_constraintTop_toBottomOf="@+id/celButtonSetFrag" />
+
+            <TextView
+                android:id="@+id/defNotTVSetFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin"
+                android:text="@string/messages_about_sudden_changes"
+                android:textColor="@color/black"
+                android:textSize="@dimen/small_text"
+                app:layout_constraintStart_toStartOf="@+id/tempTVSetFrag"
+                app:layout_constraintTop_toBottomOf="@+id/notSwitchSetFrag"/>
+
+            <TextView
+                android:id="@+id/notTVSetFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMargin"
+                android:text="@string/notifications"
+                app:layout_constraintStart_toStartOf="@+id/tempTVSetFrag"
+                app:layout_constraintTop_toTopOf="@+id/notSwitchSetFrag" />
+
+            <Switch
+                android:id="@+id/notSwitchSetFrag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/defaultMarginX2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winterThemeSetFrag" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/celButtonSetFrag"
+                style="@style/weatherButton"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/defaultMargin"
+                android:text="@string/deg_c"
+                app:layout_constraintEnd_toStartOf="@+id/farButtonSetFrag"
+                app:layout_constraintTop_toTopOf="@+id/farButtonSetFrag"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/farButtonSetFrag"
+                style="@style/weatherButton"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/deg_f"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/springThemeSetFrag"
+                style="@style/weatherButton"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="wrap_content"
+                android:text="@string/green_theme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/celButtonSetFrag"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/winterThemeSetFrag"
+                style="@style/weatherButton"
+                android:layout_width="@dimen/settings_button_width"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/defaultMargin"
+                android:text="@string/violet_theme"
+                app:layout_constraintEnd_toStartOf="@+id/springThemeSetFrag"
+                app:layout_constraintTop_toBottomOf="@+id/celButtonSetFrag"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

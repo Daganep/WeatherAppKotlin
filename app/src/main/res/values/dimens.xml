@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="maimScreenMarginTop">18dp</dimen>
+    <dimen name="mainScreenDefaultMargin">8dp</dimen>
+    <dimen name="mainImageSize">68dp</dimen>
+    <dimen name="defaultMarginX2">16dp</dimen>
+    <dimen name="defaultMarginX4">32dp</dimen>
+    <dimen name="otherDayImageSize">45dp</dimen>
+    <dimen name="otherPictureMarginStart">96dp</dimen>
+    <dimen name="marginFromAppBar">80dp</dimen>
+    <dimen name="defaultMarginX3">24dp</dimen>
+    <dimen name="cityButtonHeight">32dp</dimen>
+    <dimen name="defaultMargin">8dp</dimen>
+    <dimen name="defaultMarginX6">48dp</dimen>
+    <dimen name="defaultMarginX8">64dp</dimen>
+    <dimen name="small_text">10sp</dimen>
+    <dimen name="settings_button_width">90dp</dimen>
+</resources>

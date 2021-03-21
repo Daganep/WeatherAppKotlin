@@ -1,3 +1,68 @@
 <resources>
-    <string name="app_name">WeatherAppKotlin</string>
+    <string name="app_name">WeatherApp2.0</string>
+    <string name="current_temperature_image">Current temperature image</string>
+    <string name="wind_speed">wind_speed</string>
+    <string name="pressure">pressure</string>
+    <string name="humidity">humidity</string>
+    <string name="tomorrowtempimage">tomorrowTempImage</string>
+    <string name="temptext">TempText</string>
+    <string name="load_info_network_error">Network connection error.\nPlease, check network settings.</string>
+    <string name="load_info_server_error">Server connection error.\nPlease, try again later.</string>
+    <string name="appbar_title">WeatherApp 2.0</string>
+    <string name="current_city">Current City</string>
+    <string name="write_name_of_city">Write name of city</string>
+    <string name="popular_cities">Popular Cities</string>
+    <string name="moscow">Moscow</string>
+    <string name="saint_petersburg">Saint Petersburg</string>
+    <string name="vladimir">Vladimir</string>
+    <string name="bishkek">Bishkek</string>
+    <string name="novosibirsk">Novosibirsk</string>
+    <string name="almaty">Almaty</string>
+    <string name="history">History:</string>
+    <string name="locationCity">Location</string>
+    <string name="accept_button">Accept</string>
+    <string name="about_button">about button</string>
+    <string name="settings_button">settings button</string>
+    <string name="change_city_button">change city button</string>
+    <string name="last_key">Last key</string>
+    <string name="clear_history_button">clear history button</string>
+    <string name="temperature">Temperature</string>
+    <string name="color_theme">Color theme</string>
+    <string name="messages_about_sudden_changes">Messages about sudden changes in weather or warnings of the Ministry of Emergencies.</string>
+    <string name="notifications">Notifications</string>
+    <string name="deg_c">°C</string>
+    <string name="deg_f">°F</string>
+    <string name="green_theme">Green</string>
+    <string name="violet_theme">Violet</string>
+    <string name="winter">winter</string>
+    <string name="spring">spring</string>
+    <string name="current_theme">current theme</string>
+    <string name="status_bar_color">statusBarColor</string>
+    <string name="units_in_settings_fragment">unitsInSettingsFragment</string>
+    <string name="theme_in_settings_fragment">themeInSettingsFragment</string>
+    <string name="not_in_settings_fragment">notificationsInSettingsFragment</string>
+
+
+    <string-array name="cities">
+        <item>Almaty</item>
+        <item>Amsterdam</item>
+        <item>Ankara</item>
+        <item>Antalya</item>
+        <item>Antwerp</item>
+        <item>Astana</item>
+        <item>Ashgabat</item>
+        <item>Baghdad</item>
+        <item>Baku</item>
+        <item>Belgrade</item>
+        <item>Berlin</item>
+        <item>Bishkek</item>
+        <item>Budapest</item>
+        <item>Moscow</item>
+        <item>Murmansk</item>
+        <item>Novosibirsk</item>
+        <item>Novosibirsk</item>
+        <item>Saint Petersburg</item>
+        <item>Vladivostok</item>
+        <item>Vladimir</item>
+    </string-array>
 </resources>
