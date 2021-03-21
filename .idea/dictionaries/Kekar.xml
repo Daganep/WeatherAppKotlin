@@ -2,7 +2,9 @@
   <dictionary name="Kekar">
     <words>
       <w>apikey</w>
+      <w>appid</w>
       <w>geocoder</w>
+      <w>gson</w>
     </words>
   </dictionary>
 </component>
