@@ -1,378 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <FrameLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.WeatherApp.AppBarOverlay">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/mainToolbar"
             android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/Theme.WeatherApp.PopupOverlay"
+            app:title="@string/appbar_title"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/marginFromAppBar"
+        android:paddingStart="@dimen/defaultMarginX4"
+        android:paddingEnd="@dimen/defaultMarginX4">
+
+        <TextView
+            android:id="@+id/curCityNameMF"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/Theme.WeatherApp.AppBarOverlay">
+            style="@style/DefaultText.CurrentCityMF"
+            android:layout_marginTop="@dimen/maimScreenMarginTop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/mainToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/Theme.WeatherApp.PopupOverlay"
-                app:title="@string/appbar_title"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainScreen"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/marginFromAppBar"
-            android:paddingStart="@dimen/defaultMarginX4"
-            android:paddingEnd="@dimen/defaultMarginX4">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/curCityNameMF">
 
             <TextView
-                android:id="@+id/curCityNameMF"
+                android:id="@+id/curTempMF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/DefaultText.CurrentCityMF"
-                android:layout_marginTop="@dimen/maimScreenMarginTop"
-                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/CurrentTempMF"/>
+
+            <ImageView
+                android:id="@+id/curTempImageMF"
+                android:layout_width="@dimen/mainImageSize"
+                android:layout_height="@dimen/mainImageSize"
+                android:layout_marginStart="@dimen/mainScreenDefaultMargin"
+                android:contentDescription="@string/current_temperature_image" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/curTempDescriptMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/curTempSensMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/curTempDescriptMF" />
+
+        <TextView
+            android:id="@+id/windSpeedMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind_speed"
+            android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintBottom_toTopOf="@+id/pressureTV"
+            app:layout_constraintEnd_toStartOf="@+id/centerLine" />
+
+        <TextView
+            android:id="@+id/windSpeedMeanMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultMarginX2"
+            app:layout_constraintStart_toEndOf="@+id/centerLine"
+            app:layout_constraintTop_toTopOf="@+id/windSpeedMF" />
+
+        <TextView
+            android:id="@+id/pressureTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pressure"
+            android:layout_marginStart="@dimen/defaultMarginX2"
+            app:layout_constraintBottom_toTopOf="@+id/day2"
+            app:layout_constraintEnd_toStartOf="@+id/centerLine"
+            app:layout_constraintTop_toBottomOf="@+id/curTempSensMF" />
+
+        <TextView
+            android:id="@+id/pressureMeanMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultMarginX2"
+            app:layout_constraintStart_toEndOf="@+id/centerLine"
+            app:layout_constraintTop_toTopOf="@+id/pressureTV" />
+
+        <TextView
+            android:id="@+id/humidityMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity"
+            android:layout_marginTop="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintEnd_toStartOf="@+id/centerLine"
+            app:layout_constraintTop_toBottomOf="@+id/pressureTV" />
+
+        <TextView
+            android:id="@+id/humidityMeanMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/defaultMarginX2"
+            app:layout_constraintStart_toEndOf="@+id/centerLine"
+            app:layout_constraintTop_toTopOf="@+id/humidityMF" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/day2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintBottom_toTopOf="@+id/day3">
+
+            <TextView
+                android:id="@+id/tomorrowDateMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
+            <TextView
+                android:id="@+id/tomorrowMF"
+                style="@style/tomorrowMF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/curCityNameMF">
-
-                <TextView
-                    android:id="@+id/curTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/CurrentTempMF"/>
-
-                <ImageView
-                    android:id="@+id/curTempImageMF"
-                    android:layout_width="@dimen/mainImageSize"
-                    android:layout_height="@dimen/mainImageSize"
-                    android:layout_marginStart="@dimen/mainScreenDefaultMargin"
-                    android:contentDescription="@string/current_temperature_image" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/tomorrowDateMF" />
 
             <TextView
-                android:id="@+id/curTempDescriptMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/DefaultText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-            <TextView
-                android:id="@+id/curTempSensMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/DefaultText"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/curTempDescriptMF" />
-
-            <TextView
-                android:id="@+id/windSpeedMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/wind_speed"
-                android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintBottom_toTopOf="@+id/pressureTV"
-                app:layout_constraintEnd_toStartOf="@+id/centerLine" />
-
-            <TextView
-                android:id="@+id/windSpeedMeanMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/defaultMarginX2"
-                app:layout_constraintStart_toEndOf="@+id/centerLine"
-                app:layout_constraintTop_toTopOf="@+id/windSpeedMF" />
-
-            <TextView
-                android:id="@+id/pressureTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pressure"
-                android:layout_marginStart="@dimen/defaultMarginX2"
-                app:layout_constraintBottom_toTopOf="@+id/day2"
-                app:layout_constraintEnd_toStartOf="@+id/centerLine"
-                app:layout_constraintTop_toBottomOf="@+id/curTempSensMF" />
-
-            <TextView
-                android:id="@+id/pressureMeanMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/defaultMarginX2"
-                app:layout_constraintStart_toEndOf="@+id/centerLine"
-                app:layout_constraintTop_toTopOf="@+id/pressureTV" />
-
-            <TextView
-                android:id="@+id/humidityMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/humidity"
-                android:layout_marginTop="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintEnd_toStartOf="@+id/centerLine"
-                app:layout_constraintTop_toBottomOf="@+id/pressureTV" />
-
-            <TextView
-                android:id="@+id/humidityMeanMF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/defaultMarginX2"
-                app:layout_constraintStart_toEndOf="@+id/centerLine"
-                app:layout_constraintTop_toTopOf="@+id/humidityMF" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/day2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintBottom_toTopOf="@+id/day3">
-
-                <TextView
-                    android:id="@+id/tomorrowDateMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tomorrowMF"
-                    style="@style/tomorrowMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tomorrowDateMF" />
-
-                <TextView
-                    android:id="@+id/tomorrowNightTempMF"
-                    style="@style/nightTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tomorrowDayTempMF"
-                    style="@style/dayTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tomorrowNightTempMF"
-                    app:layout_constraintStart_toEndOf="@+id/tomorrowTempImageMF"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/tomorrowTempImageMF"
-                    android:layout_width="@dimen/otherDayImageSize"
-                    android:layout_height="@dimen/otherDayImageSize"
-                    android:contentDescription="@string/tomorrowtempimage"
-                    android:layout_marginStart="@dimen/otherPictureMarginStart"
-                    android:src="@drawable/sunny_day"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/day3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintBottom_toTopOf="@+id/day4">
-
-                <TextView
-                    android:id="@+id/day3DateMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day3MF"
-                    style="@style/tomorrowMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/day3DateMF" />
-
-                <TextView
-                    android:id="@+id/day3NightTempMF"
-                    style="@style/nightTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day3DayTempMF"
-                    style="@style/dayTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/day3NightTempMF"
-                    app:layout_constraintStart_toEndOf="@+id/day3TempImageMF"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/day3TempImageMF"
-                    android:layout_width="@dimen/otherDayImageSize"
-                    android:layout_height="@dimen/otherDayImageSize"
-                    android:contentDescription="@string/tomorrowtempimage"
-                    android:layout_marginStart="@dimen/otherPictureMarginStart"
-                    android:src="@drawable/sunny_day"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/day4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintBottom_toTopOf="@+id/day5">
-
-                <TextView
-                    android:id="@+id/day4DateMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day4MF"
-                    style="@style/tomorrowMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/day4DateMF" />
-
-                <TextView
-                    android:id="@+id/day4NightTempMF"
-                    style="@style/nightTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day4DayTempMF"
-                    style="@style/dayTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/day4NightTempMF"
-                    app:layout_constraintStart_toEndOf="@+id/day4TempImageMF"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/day4TempImageMF"
-                    android:layout_width="@dimen/otherDayImageSize"
-                    android:layout_height="@dimen/otherDayImageSize"
-                    android:contentDescription="@string/tomorrowtempimage"
-                    android:layout_marginStart="@dimen/otherPictureMarginStart"
-                    android:src="@drawable/sunny_day"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/day5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
-                app:layout_constraintBottom_toTopOf="@+id/centerLine">
-
-                <TextView
-                    android:id="@+id/day5DateMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day5MF"
-                    style="@style/tomorrowMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/day5DateMF" />
-
-                <TextView
-                    android:id="@+id/day5NightTempMF"
-                    style="@style/nightTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/day5DayTempMF"
-                    style="@style/dayTempMF"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/day5NightTempMF"
-                    app:layout_constraintStart_toEndOf="@+id/day5TempImageMF"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/day5TempImageMF"
-                    android:layout_width="@dimen/otherDayImageSize"
-                    android:layout_height="@dimen/otherDayImageSize"
-                    android:contentDescription="@string/tomorrowtempimage"
-                    android:layout_marginStart="@dimen/otherPictureMarginStart"
-                    android:src="@drawable/sunny_day"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/centerLine"
+                android:id="@+id/tomorrowNightTempMF"
+                style="@style/nightTempMF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tomorrowDayTempMF"
+                style="@style/dayTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tomorrowNightTempMF"
+                app:layout_constraintStart_toEndOf="@+id/tomorrowTempImageMF"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/tomorrowTempImageMF"
+                android:layout_width="@dimen/otherDayImageSize"
+                android:layout_height="@dimen/otherDayImageSize"
+                android:contentDescription="@string/tomorrowtempimage"
+                android:layout_marginStart="@dimen/otherPictureMarginStart"
+                android:src="@drawable/sunny_day"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/day3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintBottom_toTopOf="@+id/day4">
+
+            <TextView
+                android:id="@+id/day3DateMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day3MF"
+                style="@style/tomorrowMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/day3DateMF" />
+
+            <TextView
+                android:id="@+id/day3NightTempMF"
+                style="@style/nightTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day3DayTempMF"
+                style="@style/dayTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/day3NightTempMF"
+                app:layout_constraintStart_toEndOf="@+id/day3TempImageMF"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/day3TempImageMF"
+                android:layout_width="@dimen/otherDayImageSize"
+                android:layout_height="@dimen/otherDayImageSize"
+                android:contentDescription="@string/tomorrowtempimage"
+                android:layout_marginStart="@dimen/otherPictureMarginStart"
+                android:src="@drawable/sunny_day"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/day4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintBottom_toTopOf="@+id/day5">
+
+            <TextView
+                android:id="@+id/day4DateMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day4MF"
+                style="@style/tomorrowMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/day4DateMF" />
+
+            <TextView
+                android:id="@+id/day4NightTempMF"
+                style="@style/nightTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day4DayTempMF"
+                style="@style/dayTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/day4NightTempMF"
+                app:layout_constraintStart_toEndOf="@+id/day4TempImageMF"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/day4TempImageMF"
+                android:layout_width="@dimen/otherDayImageSize"
+                android:layout_height="@dimen/otherDayImageSize"
+                android:contentDescription="@string/tomorrowtempimage"
+                android:layout_marginStart="@dimen/otherPictureMarginStart"
+                android:src="@drawable/sunny_day"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/day5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/mainScreenDefaultMargin"
+            app:layout_constraintBottom_toTopOf="@+id/centerLine">
+
+            <TextView
+                android:id="@+id/day5DateMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day5MF"
+                style="@style/tomorrowMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/day5DateMF" />
+
+            <TextView
+                android:id="@+id/day5NightTempMF"
+                style="@style/nightTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/day5DayTempMF"
+                style="@style/dayTempMF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/day5NightTempMF"
+                app:layout_constraintStart_toEndOf="@+id/day5TempImageMF"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/day5TempImageMF"
+                android:layout_width="@dimen/otherDayImageSize"
+                android:layout_height="@dimen/otherDayImageSize"
+                android:contentDescription="@string/tomorrowtempimage"
+                android:layout_marginStart="@dimen/otherPictureMarginStart"
+                android:src="@drawable/sunny_day"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/emptyResult"
-            android:visibility="gone"
+            android:id="@+id/centerLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:layout_gravity="center"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </FrameLayout>
-</layout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/emptyResult"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_gravity="center"/>
+
+</FrameLayout>
