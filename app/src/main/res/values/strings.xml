@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherApp2.0</string>
+    <string name="app_name">WeatherAppKotlin</string>
     <string name="current_temperature_image">Current temperature image</string>
     <string name="wind_speed">wind_speed</string>
     <string name="pressure">pressure</string>

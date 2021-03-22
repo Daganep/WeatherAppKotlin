@@ -5,7 +5,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CurrentResponseInfo(val response: OpenWeatherResponse, private val tempU: String){
+class CurrentResponseInfo(val response: OpenWeatherResponse?, private val tempU: String?){
 
     private lateinit var sdf: SimpleDateFormat
     private lateinit var sdd: SimpleDateFormat
@@ -31,35 +31,35 @@ class CurrentResponseInfo(val response: OpenWeatherResponse, private val tempU: 
     }
 
     fun getCityName(): String? {
-        return response.city?.name
+        return response?.city?.name
     }
 
     fun getCurrentTemp(): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(0)?.main?.temp).toString() + tempUnits
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(0)?.main?.temp).toString() + tempUnits
     }
 
     fun getCurrentImagePath(): String? {
-        return Constants.IMAGE_PATH + (response.list?.get(0)?.weather?.get(0)?.icon) + Constants.IMAGE_FORMAT
+        return Constants.IMAGE_PATH + (response?.list?.get(0)?.weather?.get(0)?.icon) + Constants.IMAGE_FORMAT
     }
 
     fun getCurrentTempDescription(): String? {
-        return response.list?.get(0)?.weather?.get(0)?.description
+        return response?.list?.get(0)?.weather?.get(0)?.description
     }
 
     fun getGetCurrentTempSens(): String? {
-        return "Feels like: " + java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(0)?.main?.feelsLike) + tempUnits
+        return "Feels like: " + java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(0)?.main?.feelsLike) + tempUnits
     }
 
     fun getWindSpeed(): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(0)?.wind?.speed).toString() + " meter/sec"
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(0)?.wind?.speed).toString() + " meter/sec"
     }
 
     fun getPressure(): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(0)?.main?.pressure).toString() + " hPa"
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(0)?.main?.pressure).toString() + " hPa"
     }
 
     fun getHumidity(): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(0)?.main?.humidity).toString() + " %"
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(0)?.main?.humidity).toString() + " %"
     }
 
     fun getOtherDayDate(i: Int): String? {
@@ -73,14 +73,14 @@ class CurrentResponseInfo(val response: OpenWeatherResponse, private val tempU: 
     }
 
     fun getOtherDayImagePath(i: Int): String? {
-        return Constants.IMAGE_PATH + response.list?.get(i)?.weather?.get(0)?.icon + Constants.IMAGE_FORMAT
+        return Constants.IMAGE_PATH + response?.list?.get(i)?.weather?.get(0)?.icon + Constants.IMAGE_FORMAT
     }
 
     fun getOtherDayTemp(i: Int): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(1)?.main?.tempMax).toString() + tempUnits
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(1)?.main?.tempMax).toString() + tempUnits
     }
 
     fun getOtherNightTemp(i: Int): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response.list?.get(1)?.main?.tempMin).toString() + tempUnits
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(1)?.main?.tempMin).toString() + tempUnits
     }
 }

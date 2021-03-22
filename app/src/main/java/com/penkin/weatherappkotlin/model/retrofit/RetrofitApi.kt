@@ -27,6 +27,6 @@ class RetrofitApi {
                 .create(IRetrofitService::class.java)
     }
 
-    fun requestServer(city: String, apiKey: String, units: String): Observable<OpenWeatherResponse>
+    fun requestServer(city: String, apiKey: String, units: String?): Observable<OpenWeatherResponse>
         = api.getWeather(city, apiKey, units).subscribeOn(Schedulers.io())
 }

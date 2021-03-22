@@ -8,17 +8,17 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.preference.PreferenceManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import androidx.core.app.ActivityCompat
 import com.penkin.weatherappkotlin.BuildConfig
 import com.penkin.weatherappkotlin.R
 import com.penkin.weatherappkotlin.application.Constants
 import com.penkin.weatherappkotlin.databinding.ActivityMainBinding
 import com.penkin.weatherappkotlin.model.Settings
+import moxy.MvpAppCompatActivity
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MvpAppCompatActivity() {
 
     private var curTheme: Int = 0
     private var statusBarColor: Int = 0
@@ -66,45 +66,44 @@ class MainActivity : AppCompatActivity() {
     private fun getLocation(){
         if(ActivityCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            )
+                Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
-            )
+                Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ), 100
-            )
+                    Manifest.permission.ACCESS_COARSE_LOCATION), 100)
         }else {
             // Location manager
             mLocManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
             // Current Location
-            var loc: Location
+            var loc: Location? = null
 
             // Receive information from GPS provider
             if (BuildConfig.DEBUG && mLocManager == null) {
                 error("Assertion failed")
             }
-            loc = mLocManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)!!
+            mLocManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.let { loc = it }
+
 
             // Receive information from Passive (virtual) provider
-            loc = mLocManager!!.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)!!
+            mLocManager?.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)?.let { loc = it }
+            //loc = mLocManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
 
             //mPassiveInfo.setText(locToString(loc));
-            Settings.locationCity = getCityLoc(loc)
+            loc?.let { Settings.locationCity = getCityLoc(it) }
+
         }
     }
 
     private fun getCityLoc(loc: Location): String{
         // Create geocoder
-        val geo: Geocoder = Geocoder(this)
+        val geo = Geocoder(this)
 
         // Try to get addresses list
         var list: List<Address>
@@ -122,10 +121,6 @@ class MainActivity : AppCompatActivity() {
         // Get first element from List
         val a: Address = list[0]
 
-        // Get a Postal Code
-        val index: Int = a.maxAddressLineIndex
-        var postal: String? = null
-        if(index > 0)postal = a.getAddressLine(index)
         return a.adminArea
     }
 

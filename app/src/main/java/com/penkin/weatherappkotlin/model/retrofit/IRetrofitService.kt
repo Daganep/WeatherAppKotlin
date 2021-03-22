@@ -9,5 +9,5 @@ interface IRetrofitService {
     @GET("data/2.5/forecast")
     fun getWeather(@Query("q") city: String?,
                    @Query("appid")keyApi: String,
-                   @Query("units")units: String): Observable<OpenWeatherResponse>
+                   @Query("units")units: String?): Observable<OpenWeatherResponse>
 }
