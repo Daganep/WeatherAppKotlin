@@ -37,12 +37,12 @@ class MainPresenter: MvpPresenter<MainView>() {
     }
 
     private fun getCityName(lastKey: String): String {
-        return if (Settings.currentCity.isEmpty()) {
+        return if (Settings.currentCity.equals("")) {
             if (lastKey.isEmpty()) Settings.defaultCity else lastKey
-        } else Settings.currentCity
+        } else Settings.currentCity!!
     }
 
-    fun requestData(cityName: String){
+    private fun requestData(cityName: String){
         val observable: Observable<OpenWeatherResponse> = retrofitApi
                 .requestServer(cityName, Constants.APIKEY, Settings.units)
         subscriptions.add(observable.observeOn(AndroidSchedulers.mainThread()).subscribe(

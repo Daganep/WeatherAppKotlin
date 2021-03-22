@@ -10,10 +10,10 @@ import io.reactivex.Single
 @Dao
 interface ICityDao {
     @Query("SELECT * FROM table_cities")
-    fun getAll(): Single<List<City?>?>?
+    fun getAll(): Single<MutableList<City?>?>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertList(cities: List<City?>?): Single<List<Long?>?>?
+    fun insertList(cities: MutableList<City?>?): Single<List<Long?>?>?
 
     @Query("DELETE FROM table_cities")
     fun deleteAll(): Single<Int?>?

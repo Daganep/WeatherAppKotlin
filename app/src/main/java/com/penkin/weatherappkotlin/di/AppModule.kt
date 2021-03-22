@@ -18,7 +18,7 @@ class AppModule(private val application: Application) {
     fun provideDatabase(context: Context): CityHistoryDatabase {
         return Room.databaseBuilder(
                 context,
-                CityHistoryDatabase::class.java, "nasalib_database")
+                CityHistoryDatabase::class.java, "weatherkotlin_database")
                 .fallbackToDestructiveMigration()
                 .build()
     }
@@ -37,5 +37,5 @@ class AppModule(private val application: Application) {
 
     @Singleton
     @Provides
-    fun provideContext() = application
+    fun provideContext(): Context = application
 }

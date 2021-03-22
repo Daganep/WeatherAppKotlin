@@ -77,10 +77,10 @@ class CurrentResponseInfo(val response: OpenWeatherResponse?, private val tempU:
     }
 
     fun getOtherDayTemp(i: Int): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(1)?.main?.tempMax).toString() + tempUnits
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(i)?.main?.tempMax).toString() + tempUnits
     }
 
     fun getOtherNightTemp(i: Int): String? {
-        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(1)?.main?.tempMin).toString() + tempUnits
+        return java.lang.String.format(Locale.getDefault(), "%.0f", response?.list?.get(i)?.main?.tempMin).toString() + tempUnits
     }
 }
